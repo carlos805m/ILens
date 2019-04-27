@@ -17,7 +17,7 @@ public class mainMenu extends AppCompatActivity {
         mainMenu.this.startActivity(myIntent);
     }
     public void convert3D(View v){
-        Intent myIntent = new Intent(mainMenu.this, viewer_3d.class);
+        Intent myIntent = new Intent(mainMenu.this, convert.class);
         mainMenu.this.startActivity(myIntent);
     }
     public void manageFiles(View v){

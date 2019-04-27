@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".convert"></activity>
         <activity
             android:name=".viewer_3d"
             android:label="@string/title_activity_viewer_3d"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".mainMenu" />
         <activity
             android:name=".MainActivity"
