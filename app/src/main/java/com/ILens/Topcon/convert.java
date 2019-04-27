@@ -36,7 +36,7 @@ public class convert extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_convert);
 
         btn_get_token = (Button)findViewById(R.id.btnGetToken);
         btn_get_token.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +65,8 @@ public class convert extends AppCompatActivity {
                 try {
 
                     ProgressDialog progress = new ProgressDialog(convert.this);
+                    AsyncGetToken task_gettoken =  new AsyncGetToken(progress,convert.this);
+                    task_gettoken.execute();
                     AsyncCreateBucket task_createtoken =  new AsyncCreateBucket(progress,convert.this);
                     task_createtoken.execute();
                 }
@@ -107,6 +109,8 @@ public class convert extends AppCompatActivity {
 
 
                 ProgressDialog progress = new ProgressDialog(convert.this);
+                AsyncUpload task_upload =  new AsyncUpload(progress,convert.this);
+                task_upload.execute();
                 AsyncPostJob task_post_job =  new AsyncPostJob(progress,convert.this);
                 task_post_job.execute();
 
