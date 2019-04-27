@@ -13,6 +13,8 @@ public class Global {
 
     public static String BUCKET_KEY = "";
 
+    public static int BUCKET_NUM = 1;
+
     public static String FILE_NAME = "";
 
     public static String token = "";

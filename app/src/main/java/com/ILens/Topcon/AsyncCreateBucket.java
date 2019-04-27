@@ -6,6 +6,7 @@ package com.ILens.Topcon;
 
 import android.os.AsyncTask;
 import android.app.ProgressDialog;
+import android.util.Log;
 import android.widget.Toast;
 import android.widget.TextView;
 
@@ -20,6 +21,8 @@ import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.auth.OAuth2TwoLegged;
 import com.autodesk.client.model.Bucket;
 import com.autodesk.client.model.PostBucketsPayload;
+
+import static com.ILens.Topcon.Global.BUCKET_NUM;
 
 public class AsyncCreateBucket extends AsyncTask<List<String>, String, Void>  {
 
@@ -76,9 +79,13 @@ public class AsyncCreateBucket extends AsyncTask<List<String>, String, Void>  {
                 statusView.setText("working for create bucket.....");
 
                 TextView bucketName = (TextView)activity.findViewById(R.id.textViewBucketName);
-                String BUCKET_KEY = bucketName.getText().toString();
+                //String BUCKET_KEY = bucketName.getText().toString();
+                String BUCKET_KEY = "ilens000" + Integer.toString(BUCKET_NUM);
+                Log.d("BUCKET_NAME", BUCKET_KEY);
+                Global.BUCKET_NUM = Global.BUCKET_NUM + 1;
+
                 //reset the bucket key with user input
-                Global.BUCKET_KEY = BUCKET_KEY;
+                //Global.BUCKET_KEY = BUCKET_KEY;
 
                 PostBucketsPayload payload = new PostBucketsPayload();
                 payload.setBucketKey(BUCKET_KEY);
