@@ -6,8 +6,14 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.customtabs.CustomTabsCallback;
+import android.support.customtabs.CustomTabsClient;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.customtabs.CustomTabsService;
+import android.support.customtabs.CustomTabsSession;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +39,7 @@ public class convert extends AppCompatActivity {
     private Button btn_post_job;
     private Button btn_show_thumbnail;
     private Button btn_display_model;
+
 
 
 
@@ -143,10 +150,17 @@ public class convert extends AppCompatActivity {
 
 
                 //start the browser activity
-                Intent viewModelIntent = new
-                        Intent("android.intent.action.VIEW",Uri.parse(viewUrl));
-                startActivity(viewModelIntent);
+                //Intent viewModelIntent = new
+                  //      Intent("android.intent.action.VIEW",Uri.parse(viewUrl));
+                //startActivity(viewModelIntent);
 
+
+                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                builder.setToolbarColor(0x4B4B4B);
+                builder.setStartAnimations(convert.this, R.anim.slide_in_right, R.anim.slide_out_left);
+                builder.setExitAnimations(convert.this, R.anim.slide_in_left, R.anim.slide_out_right);
+                CustomTabsIntent customTabsIntent = builder.build();
+                customTabsIntent.launchUrl(convert.this, Uri.parse(viewUrl));
                 /*
                 Intent myIntent = new Intent(convert.this, viewer_3d.class);
                 //Log.d("urlTest", Uri.parse(viewUrl));
@@ -162,46 +176,6 @@ public class convert extends AppCompatActivity {
         grantPermission("android.Manifest.permission.READ_EXTERNAL_STORAGE");
     }
 
-    public void firstButton(View v){
-        try {
-
-            ProgressDialog progress = new ProgressDialog(convert.this);
-            AsyncGetToken task_gettoken =  new AsyncGetToken(progress,convert.this);
-            task_gettoken.execute();
-        }
-        catch(Exception ex){
-
-            Toast.makeText(
-                    getApplicationContext(),
-                    ex.toString(),
-                    Toast.LENGTH_LONG).show();
-        }
-
-        try{
-            ProgressDialog progress = new ProgressDialog(convert.this);
-            AsyncCreateBucket task_createtoken =  new AsyncCreateBucket(progress,convert.this);
-            task_createtoken.execute();
-        }catch (Exception ex){
-            Toast.makeText(
-                    getApplicationContext(),
-                    ex.toString(),
-                    Toast.LENGTH_LONG).show();
-        }
-        //loadFileList();
-        //myFileDialog(DIALOG_LOAD_FILE).show();
-    }
-    public void secondButton(View v){
-        if (mChosenFile==null || mChosenFile=="")
-            return;
-
-        ProgressDialog progress = new ProgressDialog(convert.this);
-        AsyncUpload task_upload =  new AsyncUpload(progress,convert.this);
-        task_upload.execute();
-
-        progress = new ProgressDialog(convert.this);
-        AsyncPostJob task_post_job =  new AsyncPostJob(progress,convert.this);
-        task_post_job.execute();
-    }
 
 
 

@@ -8,8 +8,8 @@ import com.autodesk.client.auth.OAuth2TwoLegged;
 
 public class Global {
 
-    public static final String CLIENT_ID = "BH4OqdzTPLx5x2Yy2UgyaosDBexmKv0E";
-    public static final String CLIENT_SECRET = "M39c7c30c157347a";
+    public static final String CLIENT_ID = "PfR3TSEv6odPBcUyf44E7epgfAw75T1M";
+    public static final String CLIENT_SECRET = "3QKI6yGwEyKvOcPO";
 
     public static String BUCKET_KEY = "";
 

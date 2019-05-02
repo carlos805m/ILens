@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ILens.Topcon">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,11 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".convert"></activity>
+        <activity android:name=".fileManager"></activity>
+        <activity android:name=".camera" />
+        <activity android:name=".convert" />
         <activity
             android:name=".viewer_3d"
-            android:label="@string/title_activity_viewer_3d"
             android:hardwareAccelerated="true"
+            android:label="@string/title_activity_viewer_3d"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".mainMenu" />
         <activity
