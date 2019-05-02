@@ -6,6 +6,8 @@ import android.os.Environment;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ILens.Topcon.Global;
+import com.ILens.Topcon.convert;
 import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;
 import com.autodesk.client.auth.OAuth2TwoLegged;

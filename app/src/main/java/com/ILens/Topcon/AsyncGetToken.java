@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import com.ILens.Topcon.Global;
+import com.ILens.Topcon.convert;
 import com.autodesk.client.ApiException;
 import com.autodesk.client.auth.Credentials;
 import com.autodesk.client.auth.OAuth2TwoLegged;
@@ -72,7 +74,7 @@ public class AsyncGetToken extends AsyncTask<List<String>, String, Void>  {
         super.onProgressUpdate(values);
         if (values != null && values.length > 0) {
 
-            //statusView.setText(values[0]);
+            statusView.setText(values[0]);
 
             //the JWT token string is too long,
             // but no idea why it does not work with
@@ -87,7 +89,7 @@ public class AsyncGetToken extends AsyncTask<List<String>, String, Void>  {
                 tokenStr += ".........";
             }
 
-            //tokenView.setText(tokenStr);
+            tokenView.setText(tokenStr);
 
 
         }

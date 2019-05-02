@@ -15,6 +15,7 @@
         <activity
             android:name=".viewer_3d"
             android:label="@string/title_activity_viewer_3d"
+            android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".mainMenu" />
         <activity

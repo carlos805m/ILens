@@ -72,7 +72,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="firstButton"
                 android:text="Browser Model" />
 
             <TextView
@@ -116,7 +115,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="secondButton"
                 android:text="Post Job" />
 
             <TextView
@@ -164,6 +162,7 @@
             android:ems="10"
             android:inputType="textMultiLine"
             tools:text="DEFAULT TEXT TEST" />
+
 
     </android.support.design.widget.AppBarLayout>
 </android.support.design.widget.CoordinatorLayout>

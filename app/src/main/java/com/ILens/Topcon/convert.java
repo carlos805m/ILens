@@ -12,9 +12,11 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,13 +35,85 @@ public class convert extends AppCompatActivity {
     private Button btn_display_model;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_convert);
+        btn_get_token = (Button)findViewById(R.id.btnGetToken);
+        btn_get_token.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                try {
+
+                    ProgressDialog progress = new ProgressDialog(convert.this);
+                    AsyncGetToken task_gettoken =  new AsyncGetToken(progress,convert.this);
+                    task_gettoken.execute();
+                }
+                catch(Exception ex){
+
+                    Toast.makeText(
+                            getApplicationContext(),
+                            ex.toString(),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        btn_create_bucket = (Button)findViewById(R.id.btnCreateBucket);
+        btn_create_bucket.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                try {
+
+                    ProgressDialog progress = new ProgressDialog(convert.this);
+                    AsyncCreateBucket task_createtoken =  new AsyncCreateBucket(progress,convert.this);
+                    task_createtoken.execute();
+                }
+                catch(Exception ex){
+
+                    Toast.makeText(
+                            getApplicationContext(),
+                            ex.toString(),
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        btn_browser_model = (Button)findViewById(R.id.btnBrowserModel);
+        btn_browser_model.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                loadFileList();
+                myFileDialog(DIALOG_LOAD_FILE).show();
+            }
+        });
+
+        btn_upload_model = (Button)findViewById(R.id.btnUploadModel);
+        btn_upload_model.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                if (mChosenFile==null || mChosenFile=="")
+                    return;
+
+                ProgressDialog progress = new ProgressDialog(convert.this);
+                AsyncUpload task_upload =  new AsyncUpload(progress,convert.this);
+                task_upload.execute();
+
+            }
+        });
+
+        btn_post_job = (Button)findViewById(R.id.btnPostJob);
+        btn_post_job.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
 
+                ProgressDialog progress = new ProgressDialog(convert.this);
+                AsyncPostJob task_post_job =  new AsyncPostJob(progress,convert.this);
+                task_post_job.execute();
 
+            }
+        });
 
         btn_show_thumbnail = (Button)findViewById(R.id.btnShowthumbnail);
         btn_show_thumbnail.setOnClickListener(new View.OnClickListener() {
@@ -63,21 +137,29 @@ public class convert extends AppCompatActivity {
                 TextView txtViewUrn = (TextView)findViewById(R.id.textViewUrn);
 
 
-                viewUrl = viewUrl + "token=" + txtViewToken.getText().toString();
-                viewUrl = viewUrl + "&urn=" + txtViewUrn.getText().toString();
+                viewUrl = viewUrl + "token=" + Global.token;
+                viewUrl = viewUrl + "&urn=" + Global.base64URN;
+
 
 
                 //start the browser activity
                 Intent viewModelIntent = new
-                        Intent("android.intent.action.VIEW", Uri.parse(viewUrl));
+                        Intent("android.intent.action.VIEW",Uri.parse(viewUrl));
                 startActivity(viewModelIntent);
 
-
-
+                /*
+                Intent myIntent = new Intent(convert.this, viewer_3d.class);
+                //Log.d("urlTest", Uri.parse(viewUrl));
+                //myIntent.putExtra("uri", viewUrl);
+                myIntent.putExtra("uri", "https://webglreport.com ");
+                convert.this.startActivity(myIntent);
+                */
             }
         });
 
-
+        grantPermission("android.Manifest.permission.INTERNET");
+        grantPermission("android.Manifest.permission.WRITE_EXTERNAL_STORAGE");
+        grantPermission("android.Manifest.permission.READ_EXTERNAL_STORAGE");
     }
 
     public void firstButton(View v){

@@ -16,8 +16,8 @@ import java.io.InputStreamReader;
 import java.io.BufferedInputStream;
 
 
-
-
+import com.ILens.Topcon.Global;
+import com.ILens.Topcon.convert;
 import com.autodesk.client.ApiException;
 import com.autodesk.client.ApiResponse;
 import com.autodesk.client.model.Bucket;
@@ -89,7 +89,7 @@ public class AsyncThumbnail extends AsyncTask<List<String>, String, Void> {
 
 
             ApiResponse<File> response_thumbnail = Global.derivativesApi.getThumbnail(
-                    Global.base64URN,200,200,Global.oauth2TwoLegged,Global.twoLeggedCredentials);
+                    Global.base64URN,200,200, Global.oauth2TwoLegged,Global.twoLeggedCredentials);
 
             InputStream is = new FileInputStream(response_thumbnail.getData());
             thumbnailBP = BitmapFactory.decodeStream(is);
