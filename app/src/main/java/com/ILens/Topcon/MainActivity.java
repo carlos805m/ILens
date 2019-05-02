@@ -24,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, mainMenu.class);
         MainActivity.this.startActivity(myIntent);
     }
+    public void noConnection(View v){
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
