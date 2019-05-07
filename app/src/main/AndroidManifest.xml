@@ -13,22 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fileManager"></activity>
-        <activity android:name=".camera" />
-        <activity android:name=".convert" />
+        <activity android:name=".fileManager"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".camera"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".convert"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".viewer_3d"
             android:hardwareAccelerated="true"
-            android:label="@string/title_activity_viewer_3d"
+            android:label="I-Lens"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".mainMenu" />
+        <activity
+            android:name=".mainMenu"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -6,14 +6,21 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class mainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.card_menu_activity);
     }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this,"Back Button Disabled",Toast.LENGTH_SHORT).show();
+    }
+
     public void viewer3D(View v){
         //Intent myIntent = new Intent(mainMenu.this, viewer_3d.class);
         //mainMenu.this.startActivity(myIntent);

@@ -8,8 +8,7 @@ import android.os.AsyncTask;
 import android.app.ProgressDialog;
 import android.widget.Toast;
 import android.widget.TextView;
-
-
+import java.util.UUID;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,7 +77,7 @@ public class AsyncCreateBucket extends AsyncTask<List<String>, String, Void>  {
                 statusView.setText("working for create bucket.....");
 
                 TextView bucketName = (TextView)activity.findViewById(R.id.textViewBucketName);
-                String BUCKET_KEY = bucketName.getText().toString();
+                String BUCKET_KEY = UUID.randomUUID().toString();
                 //reset the bucket key with user input
                 Global.BUCKET_KEY = BUCKET_KEY;
 
