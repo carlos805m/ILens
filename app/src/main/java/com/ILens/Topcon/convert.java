@@ -33,7 +33,7 @@ import java.io.FilenameFilter;
 public class convert extends AppCompatActivity {
 
     private Button btn_get_token;
-    private Button btn_create_bucket;
+    private Button btn_retry;
     private Button btn_browser_model;
     private Button btn_upload_model;
     private Button btn_post_job;
@@ -47,6 +47,10 @@ public class convert extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_convert);
+
+
+
+/*
         btn_get_token = (Button)findViewById(R.id.btnGetToken);
         btn_get_token.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -66,15 +70,20 @@ public class convert extends AppCompatActivity {
                 }
             }
         });
-
-        btn_create_bucket = (Button)findViewById(R.id.btnCreateBucket);
-        btn_create_bucket.setOnClickListener(new View.OnClickListener() {
+    */
+        btn_retry = (Button)findViewById(R.id.btnCreateBucket);
+        btn_retry.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 try {
 
                     ProgressDialog progress = new ProgressDialog(convert.this);
-                    AsyncCreateBucket task_createtoken =  new AsyncCreateBucket(progress,convert.this);
+                    progress.setMessage("Getting Token");
+                    AsyncGetToken task_gettoken = new AsyncGetToken(progress, convert.this);
+                    task_gettoken.execute();
+                    progress = new ProgressDialog(convert.this);
+                    progress.setMessage("Generating Bucket");
+                    AsyncCreateBucket task_createtoken = new AsyncCreateBucket(progress, convert.this);
                     task_createtoken.execute();
                 }
                 catch(Exception ex){
@@ -91,11 +100,13 @@ public class convert extends AppCompatActivity {
         btn_browser_model.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+
                 loadFileList();
                 myFileDialog(DIALOG_LOAD_FILE).show();
             }
         });
 
+        /*
         btn_upload_model = (Button)findViewById(R.id.btnUploadModel);
         btn_upload_model.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -109,13 +120,21 @@ public class convert extends AppCompatActivity {
 
             }
         });
-
+    */
         btn_post_job = (Button)findViewById(R.id.btnPostJob);
         btn_post_job.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
+                if (mChosenFile==null || mChosenFile=="") {
+                    Toast.makeText(convert.this,"You Must Select a File First",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 ProgressDialog progress = new ProgressDialog(convert.this);
+                progress.setMessage("Uploading File");
+                AsyncUpload task_upload =  new AsyncUpload(progress,convert.this);
+                task_upload.execute();
+                progress = new ProgressDialog(convert.this);
+                progress.setMessage("Converting File For View");
                 AsyncPostJob task_post_job =  new AsyncPostJob(progress,convert.this);
                 task_post_job.execute();
 
@@ -139,10 +158,6 @@ public class convert extends AppCompatActivity {
             public void onClick(View v) {
 
                 String viewUrl = "https://models.autodesk.io/view.html?";
-
-                TextView txtViewToken = (TextView)findViewById(R.id.textViewToken);
-                TextView txtViewUrn = (TextView)findViewById(R.id.textViewUrn);
-
 
                 viewUrl = viewUrl + "token=" + Global.token;
                 viewUrl = viewUrl + "&urn=" + Global.base64URN;
@@ -174,6 +189,30 @@ public class convert extends AppCompatActivity {
         grantPermission("android.Manifest.permission.INTERNET");
         grantPermission("android.Manifest.permission.WRITE_EXTERNAL_STORAGE");
         grantPermission("android.Manifest.permission.READ_EXTERNAL_STORAGE");
+
+        int count = 0;
+        while(true) {
+            try {
+
+                ProgressDialog progress = new ProgressDialog(convert.this);
+                progress.setMessage("Getting Token");
+                AsyncGetToken task_gettoken = new AsyncGetToken(progress, convert.this);
+                task_gettoken.execute();
+                progress = new ProgressDialog(convert.this);
+                progress.setMessage("Generating Bucket");
+                AsyncCreateBucket task_createtoken = new AsyncCreateBucket(progress, convert.this);
+                task_createtoken.execute();
+                return;
+            } catch (Exception ex) {
+                if(++count > 5) {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            ex.toString(),
+                            Toast.LENGTH_LONG).show();
+                    throw ex;
+                }
+            }
+        }
     }
 
 

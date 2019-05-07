@@ -47,7 +47,7 @@ public class AsyncGetToken extends AsyncTask<List<String>, String, Void>  {
         this.activity = a;
 
         statusView = (TextView)activity.findViewById(R.id.textViewStatus);
-        tokenView = (TextView)activity.findViewById(R.id.textViewToken);
+        //tokenView = (TextView)activity.findViewById(R.id.textViewToken);
     }
 
     public void onPreExecute() {
@@ -89,7 +89,7 @@ public class AsyncGetToken extends AsyncTask<List<String>, String, Void>  {
                 tokenStr += ".........";
             }
 
-            tokenView.setText(tokenStr);
+            //tokenView.setText(tokenStr);
 
 
         }

@@ -33,7 +33,7 @@ public class AsyncPostJob extends AsyncTask<List<String>, String, Void> {
     //initialize progress dialog
     private ProgressDialog progress;
     //text view of job progress
-    private TextView jobProgressView = null;
+    //private TextView jobProgressView = null;
     //text view of status
     private TextView statusView = null;
 
@@ -42,7 +42,7 @@ public class AsyncPostJob extends AsyncTask<List<String>, String, Void> {
         this.progress = p;
         this.activity = a;
         statusView = (TextView)activity.findViewById(R.id.textViewStatus);
-        jobProgressView = (TextView)activity.findViewById(R.id.textviewpostjob);
+        //jobProgressView = (TextView)activity.findViewById(R.id.textviewpostjob);
 
     }
 
@@ -71,8 +71,8 @@ public class AsyncPostJob extends AsyncTask<List<String>, String, Void> {
 
             statusView.setText(values[0]);
 
-            if(values.length>1)
-                jobProgressView.setText(values[1]);
+            //if(values.length>1)
+                //jobProgressView.setText(values[1]);
         }
     }
 

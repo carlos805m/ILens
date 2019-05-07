@@ -76,7 +76,7 @@ public class AsyncCreateBucket extends AsyncTask<List<String>, String, Void>  {
 
                 statusView.setText("working for create bucket.....");
 
-                TextView bucketName = (TextView)activity.findViewById(R.id.textViewBucketName);
+                //TextView bucketName = (TextView)activity.findViewById(R.id.textViewBucketName);
                 String BUCKET_KEY = UUID.randomUUID().toString();
                 //reset the bucket key with user input
                 Global.BUCKET_KEY = BUCKET_KEY;

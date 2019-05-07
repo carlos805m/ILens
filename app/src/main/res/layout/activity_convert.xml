@@ -15,51 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnGetToken"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Get Token" />
-
-            <TextView
-                android:id="@+id/textViewToken"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:scrollbarAlwaysDrawVerticalTrack="false"
-                android:scrollbars="horizontal"
-                android:text="Token" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnCreateBucket"
-                android:layout_width="208dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Create Bucket" />
-
-            <EditText
-                android:id="@+id/textViewBucketName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="androidtestbucket"
-                android:inputType="text"
-                android:text="androidtestbucket" />
-
-        </LinearLayout>
+            android:orientation="horizontal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,23 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnUploadModel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Upload Model" />
-
-            <TextView
-                android:id="@+id/textViewUrn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Urn" />
-
-        </LinearLayout>
+            android:orientation="horizontal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,12 +57,6 @@
                 android:layout_weight="1"
                 android:text="Post Job" />
 
-            <TextView
-                android:id="@+id/textviewpostjob"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Job Status" />
         </LinearLayout>
 
         <LinearLayout
@@ -154,7 +88,22 @@
             android:layout_weight="1"
             android:text="Launch Viewer" />
 
-        <EditText
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCreateBucket"
+                android:layout_width="208dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Retry" />
+
+        </LinearLayout>
+
+        <TextView
             android:id="@+id/textViewStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

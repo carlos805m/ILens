@@ -31,7 +31,7 @@ public class AsyncUpload extends AsyncTask<List<String>, String, Void>  {
     //initialize progress dialog
     private ProgressDialog progress;
     //text view of urn
-    private TextView urnView = null;
+    //private TextView urnView = null;
     //text view of status
     private TextView statusView = null;
 
@@ -40,7 +40,7 @@ public class AsyncUpload extends AsyncTask<List<String>, String, Void>  {
         this.progress = p;
         this.activity = a;
         statusView = (TextView)activity.findViewById(R.id.textViewStatus);
-        urnView = (TextView)activity.findViewById(R.id.textViewUrn);
+        //urnView = (TextView)activity.findViewById(R.id.textViewUrn);
 
 
     }
@@ -66,7 +66,7 @@ public class AsyncUpload extends AsyncTask<List<String>, String, Void>  {
         super.onProgressUpdate(values);
         if (values != null && values.length > 0) {
             statusView.setText(values[0]);
-            urnView.setText(values[0]);
+            //urnView.setText(values[0]);
 
         }
     }
