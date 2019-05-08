@@ -26,17 +26,29 @@ public class mainMenu extends AppCompatActivity {
         //mainMenu.this.startActivity(myIntent);
         CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
         builder.setToolbarColor(0x4B4B4B);
-
         CustomTabsIntent customTabsIntent = builder.build();
-        customTabsIntent.launchUrl(mainMenu.this, Uri.parse("https://get.webgl.org/"));
+        if(Global.base64URN != "" && Global.token != ""){
+            String viewUrl = "https://models.autodesk.io/view.html?";
+            viewUrl = viewUrl + "token=" + Global.token;
+            viewUrl = viewUrl + "&urn=" + Global.base64URN;
+            customTabsIntent.launchUrl(mainMenu.this, Uri.parse(viewUrl));
+
+        }else {
+            customTabsIntent.launchUrl(mainMenu.this, Uri.parse("https://get.webgl.org/"));
+        }
     }
     public void convert3D(View v){
         Intent myIntent = new Intent(mainMenu.this, convert.class);
         mainMenu.this.startActivity(myIntent);
     }
     public void manageFiles(View v){
-        Intent myIntent = new Intent(mainMenu.this, fileManager.class);
-        mainMenu.this.startActivity(myIntent);
+        //Intent myIntent = new Intent(mainMenu.this, fileManager.class);
+        //mainMenu.this.startActivity(myIntent);
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.cxinventor.file.explorer");
+        if (launchIntent != null) {
+            Toast.makeText(this,"Navigate to-> Main Storage / DCIM for files",Toast.LENGTH_LONG).show();
+            startActivity(launchIntent);//null pointer check in case package name was not found
+        }
     }
     public void camera(View v){
         Intent myIntent = new Intent(mainMenu.this, camera.class);

@@ -39,25 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.719" />
 
-    <Button
-        android:id="@+id/buttonNoCamera"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="157dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/buttonmain"
-        android:onClick="noConnection"
-        android:text="Skip Connection"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
 
 </android.support.constraint.ConstraintLayout>

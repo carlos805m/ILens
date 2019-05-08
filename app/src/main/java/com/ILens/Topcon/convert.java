@@ -137,10 +137,14 @@ public class convert extends AppCompatActivity {
                 progress.setMessage("Converting File For View");
                 AsyncPostJob task_post_job =  new AsyncPostJob(progress,convert.this);
                 task_post_job.execute();
+                progress = new ProgressDialog(convert.this);
+                AsyncThumbnail task_thumbnail =  new AsyncThumbnail(progress,convert.this);
+                task_thumbnail.execute();
 
             }
         });
 
+        /*
         btn_show_thumbnail = (Button)findViewById(R.id.btnShowthumbnail);
         btn_show_thumbnail.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -152,7 +156,7 @@ public class convert extends AppCompatActivity {
 
             }
         });
-
+        */
         btn_display_model = (Button)findViewById(R.id.btndisplaymodel);
         btn_display_model.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

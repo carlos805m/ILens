@@ -9,6 +9,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/topcon3"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <LinearLayout
@@ -28,7 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Browser Model" />
+                android:textColor="#000000"
+                android:background="@drawable/buttonmain"
+                android:text="1. Browser Model" />
 
             <TextView
                 android:id="@+id/textViewModelName"
@@ -55,7 +58,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Post Job" />
+                android:textColor="#000000"
+                android:background="@drawable/buttonmain"
+                android:text="2. Post Job" />
 
         </LinearLayout>
 
@@ -63,30 +68,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnShowthumbnail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Show Thumbnail" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgthumbnail"
-            android:layout_width="match_parent"
-            android:layout_height="244dp"
-            android:layout_weight="1"
-            app:srcCompat="@mipmap/ic_launcher" />
+            android:orientation="horizontal"/>
 
         <Button
             android:id="@+id/btndisplaymodel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Launch Viewer" />
+            android:textColor="#000000"
+            android:background="@drawable/buttonmain"
+            android:text="3. Launch Viewer" />
+
+        <ImageView
+            android:id="@+id/imgthumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="244dp"
+            android:layout_weight="1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -99,7 +96,9 @@
                 android:layout_width="208dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Retry" />
+                android:textColor="#000000"
+                android:background="@drawable/buttonmain"
+                android:text="If error occurs: Retry" />
 
         </LinearLayout>
 
@@ -109,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:textColor="#000000"
             android:inputType="textMultiLine"
             tools:text="DEFAULT TEXT TEST" />
 
